@@ -1,0 +1,83 @@
+/* Stile FAN-Biking*/
+
+/*Google Fonds einbinden*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:ital@0;1&family=Roboto:wght@300&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+main p{
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    text-align: center;
+}
+
+img.banner {
+    width: 105%;
+    max-height: 400px;
+    overflow: hidden;
+    background-color: #333;
+    margin-left: -1em;
+    margin-top: -1em;
+    position: relative;
+}
+
+#pageheader_container {
+    border: 1px solid black;
+    margin-left: -1em;
+    margin-right: -1em;
+    background-color: #eee;
+}
+
+#pageheader__nav {
+    display: inline-block;
+    vertical-align: baseline;
+    white-space: nowrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pageheader_nav_item {
+    position: relative;
+    display: inline-block;
+    margin: 1px 15px 1px 1px;
+}
+
+.pageheader_nav_item > a {
+    display: block;
+    font: 400 normal 20px/28px TW_Character,Arial,sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 28px;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 28px;
+    color: #000;
+    text-decoration: none;
+}
+
+.pageheader_nav_item:not(:active):not(:focus):not(:hover) > .favoritetrails_container {
+    opacity: 0;
+    top: calc(100% + 1px);
+    pointer-events: none;
+}
+
+#favoritetrails_container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.favoritetrails_nav_item:not(:active):not(:focus):not(:hover) {
+    background: inherit;
+}
+
+.favoritetrails_nav_item:not([aria-hidden]) {
+    display: block;
+}
