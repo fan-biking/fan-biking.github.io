@@ -46,7 +46,7 @@ img.banner {
     margin: 0 50px;
 }
 
-.pageHeader_nav_main_item>a {
+.pageHeader_nav_main_item > a {
     font-weight: 800;
     font-size: 30px;
     line-height: 28px;
@@ -54,11 +54,11 @@ img.banner {
     text-decoration: none;
 }
 
-.pageHeader_nav_FT_item>a:last-child {
+.pageHeader_nav_FT_item > a:last-child {
     padding: 5px 2px;
 }
 
-.pageHeader_nav_FT_item>a {
+.pageHeader_nav_FT_item > a {
     font-weight: 400;
     font-size: 20px;
     line-height: 28px;
@@ -66,7 +66,7 @@ img.banner {
     text-decoration: none;
 }
 
-.pageHeader_nav_main_item:not(:active):not(:focus):not(:hover)>.pageHeader_nav_FT {
+.pageHeader_nav_main_item:not(:active):not(:focus):not(:hover) > .pageHeader_nav_FT {
     opacity: 0;
     top: calc(100% + 1px);
     pointer-events: none;
@@ -79,7 +79,7 @@ img.banner {
     text-align: left;
 }
 
-.pageHeader_nav_FT>ul {
+.pageHeader_nav_FT > ul {
     background: #e6e6e6;
 }
 
