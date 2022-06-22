@@ -19,11 +19,6 @@ const eGrundkarteTirol = {
             attribution: `Datenquelle: <a href="https://www.data.gv.at/katalog/dataset/land-tirol_elektronischekartetirol">eGrundkarte Tirol</a>`
         }
     ),
-    winter: L.tileLayer(
-        "http://wmts.kartetirol.at/gdi_winter/{z}/{x}/{y}.png", {
-            attribution: `Datenquelle: <a href="https://www.data.gv.at/katalog/dataset/land-tirol_elektronischekartetirol">eGrundkarte Tirol</a>`
-        }
-    ),
     ortho: L.tileLayer(
         "http://wmts.kartetirol.at/gdi_ortho/{z}/{x}/{y}.png", {
             attribution: `Datenquelle: <a href="https://www.data.gv.at/katalog/dataset/land-tirol_elektronischekartetirol">eGrundkarte Tirol</a>`
@@ -53,6 +48,16 @@ let map = L.map("map", {
         startLayer
     ],
 });
+
+// Layer control mit WMTS Hintergründen
+let layerControl = L.control.layers({
+    "eGrundkarte Tirol Sommer": startLayer,
+    "eGrundkarte Tirol Orthofoto": eGrundkarteTirol.ortho,
+    "eGrundkarte Tirol Orthofoto mit Beschriftung": L.layerGroup([
+        eGrundkarteTirol.ortho,
+        eGrundkarteTirol.nomenklatur,
+    ])
+}).addTo(map);
 
 // Fullscreen control
 L.control.fullscreen().addTo(map);
