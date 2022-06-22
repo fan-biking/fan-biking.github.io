@@ -10,6 +10,17 @@
     <!-- Kartenscript -->
     <script defer src="main.js"></script>
 
+    <!-- Leaflet Bibliothek -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+    <!-- Leaflet providers plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-providers/1.13.0/leaflet-providers.min.js" integrity="sha512-5EYsvqNbFZ8HX60keFbe56Wr0Mq5J1RrA0KdVcfGDhnjnzIRsDrT/S3cxdzpVN2NGxAB9omgqnlh4/06TvWCMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Leaflet fullscreen plugin -->
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css'
@@ -21,39 +32,33 @@
     <!--Stile einbauen-->
     <link rel="stylesheet" href="main.css">
 
-    <!-- Leaflet Bibliothek -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
-
 </head>
 
 <body>
     <main>
-        <img class="banner" src="images/prov.Header.jpg" alt="drei skizzierte Radfahrer">
-        <div id="pageHeader_nav">
+        <header>
+            <img class="banner" src="images/prov.Header.jpg" alt="drei skizzierte Radfahrer">
+            <div id="pageHeader_nav">
 
-            <nav id="pageHeader_nav_main">
-                <ul>
-                    <li class="pageHeader_nav_main_item"><a href="https://fan-biking.github.io/index.html">Home</a></a></li>
-                    <li class="pageHeader_nav_main_item active"><a href="https://fan-biking.github.io/karte.html">Interaktive Karte</a></li>
-                    <li class="pageHeader_nav_main_item"><a href="#">Favorite
+                <nav id="pageHeader_nav_main">
+                    <ul>
+                        <li class="pageHeader_nav_main_item"><a href="https://fan-biking.github.io/index.html">Home</a></a></li>
+                        <li class="pageHeader_nav_main_item active"><a href="https://fan-biking.github.io/karte.html">Interaktive Karte</a></li>
+                        <li class="pageHeader_nav_main_item"><a href="#">Favorite
                             Trails</a>
-                        <div class="pageHeader_nav_FT">
-                            <ul>
-                                <li class="pageHeader_nav_FT_item"><a href="#">Fabis Trail</a></li>
-                                <li class="pageHeader_nav_FT_item"><a href="#">Andreas Trail</a></li>
-                                <li class="pageHeader_nav_FT_item"><a href="#">Nellys Trail</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
+                            <div class="pageHeader_nav_FT">
+                                <ul>
+                                    <li class="pageHeader_nav_FT_item"><a href="#">Fabis Trail</a></li>
+                                    <li class="pageHeader_nav_FT_item"><a href="#">Andreas Trail</a></li>
+                                    <li class="pageHeader_nav_FT_item"><a href="#">Nellys Trail</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
 
-        </div>
+            </div>
+        </header>
         <article>
             <h1>Interaktive Karte</h1>
             <div id="map"> </div>
