@@ -1,0 +1,90 @@
+/* Stile FAN-Biking*/
+
+/*Google Fonds einbinden*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:ital@0;1&family=Roboto:wght@300&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+main p {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    text-align: center;
+}
+
+img.banner {
+    width: 105%;
+    max-height: 400px;
+    overflow: hidden;
+    background-color: #333;
+    margin-left: -1em;
+    margin-top: -1em;
+    position: relative;
+}
+
+#pageHeader_nav {
+    text-align: center;
+    border: 1px solid black;
+    margin-left: -1em;
+    margin-right: -1em;
+    background-color: #eee;
+    padding: 1em;
+}
+
+#pageHeader_nav_main ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pageHeader_nav_main_item {
+    position: relative;
+    display: inline-block;
+    margin: 0 50px;
+}
+
+.pageHeader_nav_main_item > a {
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 28px;
+    color: #000;
+    text-decoration: none;
+}
+
+.pageHeader_nav_FT_item > a:last-child {
+    padding: 5px 2px;
+}
+
+.pageHeader_nav_FT_item > a {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    color: #000;
+    text-decoration: none;
+}
+
+.pageHeader_nav_main_item:not(:active):not(:focus):not(:hover) > .pageHeader_nav_FT {
+    opacity: 0;
+    top: calc(100% + 1px);
+    pointer-events: none;
+}
+
+.pageHeader_nav_FT {
+    position: absolute;
+    left: 0;
+    min-width: 200px;
+    text-align: left;
+}
+
+.pageHeader_nav_FT > ul {
+    background: #e6e6e6;
+}
+
+#map {
+    width: 100%;
+    height: 600px;
+    border: 1px solid gray;
+}
