@@ -72,6 +72,11 @@ img.banner {
     pointer-events: none;
 }
 
+.pageHeader_nav_main_item.active > a,
+.pageHeader_nav_main_item:hover > a {
+    color: #ff0088;
+}
+
 .pageHeader_nav_FT {
     position: absolute;
     left: 0;
