@@ -81,3 +81,9 @@ img.banner {
 .favoritetrails_nav_item:not([aria-hidden]) {
     display: block;
 }
+
+#map {
+    width: 100%;
+    height: 600px;
+    border: 1px solid gray;
+}
