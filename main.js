@@ -1,11 +1,5 @@
 /* Interaktive Karte Skript*/
 
-let lat = 47.223193
-let lng = 11.526103
-let zoom = 11
-
-
-
 let innsbruck = {
     lat: 47.267222,
     lng: 11.392778,
