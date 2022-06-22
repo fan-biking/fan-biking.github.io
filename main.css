@@ -82,3 +82,9 @@ img.banner {
 .pageHeader_nav_FT > ul {
     background: #e6e6e6;
 }
+
+#map {
+    width: 100%;
+    height: 600px;
+    border: 1px solid gray;
+}
