@@ -57,6 +57,7 @@ let layerControl = L.control.layers({
 L.control.fullscreen().addTo(map);
 
 // Radrouten_Tirol geojson einbauen und anzeigen
+//funktioniert noch nicht
 
 async function loadRadrouten_Tirol(url) {
     let response = await fetch(url);
