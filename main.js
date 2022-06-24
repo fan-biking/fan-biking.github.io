@@ -55,3 +55,19 @@ let layerControl = L.control.layers({
 
 // Fullscreen control
 L.control.fullscreen().addTo(map);
+
+// Radrouten_Tirol geojson einbauen und anzeigen
+
+async function loadRadrouten_Tirol(url) {
+    let response = await fetch(url);
+    let geojson = await response.json ();
+    //console.log('Geojson Radrouten_Tirol: ', geojson);
+L.geoJSON(data, {
+    style: function (feature) {
+        return {color: feature.properties.color};
+    }
+}).bindPopup(function (layer) {
+    return layer.feature.properties.description;
+}).addTo(map);
+}
+loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
