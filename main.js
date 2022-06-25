@@ -76,7 +76,7 @@ async function loadRadrouten_Tirol(url) {
     //console.log('Geojson Radrouten_Tirol: ', geojson);
     L.geoJSON(geojson, {
         style: function(feature) {
-            console.log(feature.properties.OBJEKT)
+            //console.log(feature.properties.OBJEKT)
 
             let colors = {
                 "leicht": "#0074D9",
@@ -87,14 +87,14 @@ async function loadRadrouten_Tirol(url) {
             if (feature.properties.OBJEKT == "RADW_L" || feature.properties.OBJEKT == "RAD_M" || feature.properties.OBJEKT == "RAD_S") {
                 return {
                     color: `${colors[feature.properties.SCHWIERIGKEITSGRAD]}`,
-                weight: 2,
+                weight: 3,
                 }
             }
 
             else if (feature.properties.OBJEKT == "MTB_L" || feature.properties.OBJEKT == "MTB_M" || feature.properties.OBJEKT == "MTB_S") {
                 return {
                     color: `${colors[feature.properties.SCHWIERIGKEITSGRAD]}`,
-                weight: 2,
+                weight: 3,
                 dashArray: [10,6],
                 }
             }
@@ -103,14 +103,15 @@ async function loadRadrouten_Tirol(url) {
                 return {
                     color: `${colors[feature.properties.SCHWIERIGKEITSGRAD]}`,
                 weight: 4,
-                dashArray: [1,5]
+                dashArray: [2,10]
                 }
             }
         }
     }).bindPopup(function (layer) {
         return `
-        <h4>${layer.feature.properties.ROUTENNAME}</h4>
-
+        <strong>${layer.feature.properties.ROUTENNAME}</strong><hr>
+        ${layer.feature.properties.ROUTEN_TYP}<br>
+        Fahrzeit: ${layer.feature.properties.FAHRZEIT}
         `
     }).addTo(map)
 }
