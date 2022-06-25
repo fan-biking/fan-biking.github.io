@@ -69,18 +69,49 @@ let miniMap = new L.Control.MiniMap(
 ).addTo(map)
 
 // Radrouten_Tirol geojson einbauen und anzeigen
-//funktioniert noch nicht
 
 async function loadRadrouten_Tirol(url) {
     let response = await fetch(url);
     let geojson = await response.json ();
     //console.log('Geojson Radrouten_Tirol: ', geojson);
-L.geoJSON(data, {
-    style: function (feature) {
-        return {color: feature.properties.color};
-    }
-}).bindPopup(function (layer) {
-    return layer.feature.properties.description;
-}).addTo(map);
+    L.geoJSON(geojson, {
+        style: function(feature) {
+            console.log(feature.properties.OBJEKT)
+
+            let colors = {
+                "leicht": "#0074D9",
+                "mittelschwierig": "#FF4136",
+                "schwierig": "#111111"
+            };
+
+            if (feature.properties.OBJEKT == "RADW_L" || feature.properties.OBJEKT == "RAD_M" || feature.properties.OBJEKT == "RAD_S") {
+                return {
+                    color: `${colors[feature.properties.SCHWIERIGKEITSGRAD]}`,
+                weight: 2,
+                }
+            }
+
+            else if (feature.properties.OBJEKT == "MTB_L" || feature.properties.OBJEKT == "MTB_M" || feature.properties.OBJEKT == "MTB_S") {
+                return {
+                    color: `${colors[feature.properties.SCHWIERIGKEITSGRAD]}`,
+                weight: 2,
+                dashArray: [10,6],
+                }
+            }
+
+            else {
+                return {
+                    color: `${colors[feature.properties.SCHWIERIGKEITSGRAD]}`,
+                weight: 4,
+                dashArray: [1,5]
+                }
+            }
+        }
+    }).bindPopup(function (layer) {
+        return `
+        <h4>${layer.feature.properties.ROUTENNAME}</h4>
+
+        `
+    }).addTo(map)
 }
 loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
