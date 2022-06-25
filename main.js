@@ -56,6 +56,18 @@ let layerControl = L.control.layers({
 // Fullscreen control
 L.control.fullscreen().addTo(map);
 
+// Maßstab hinzufügen
+L.control.scale({
+    imperial: false,
+}).addTo(map);
+
+// Minimap
+let miniMap = new L.Control.MiniMap(
+    L.tileLayer.provider("OpenStreetMap.Mapnik"), {
+        toggleDisplay: true
+    }
+).addTo(map)
+
 // Radrouten_Tirol geojson einbauen und anzeigen
 //funktioniert noch nicht
 
