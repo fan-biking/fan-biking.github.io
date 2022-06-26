@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FAN: Andreas Trail</title>
+    
+        <!--Tab-Vorschaubild-->
+        <link rel="shortcut icon" href="images/prov.user.jpg" type="image/jpg">
+        
+        <!-- Kartenscript -->
+        <script defer src="main.js"></script>
+    
+        <!-- Leaflet Bibliothek -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+         crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+         crossorigin=""></script>
+    
+        <!-- Leaflet providers plugin -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-providers/1.13.0/leaflet-providers.min.js" integrity="sha512-5EYsvqNbFZ8HX60keFbe56Wr0Mq5J1RrA0KdVcfGDhnjnzIRsDrT/S3cxdzpVN2NGxAB9omgqnlh4/06TvWCMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+        <!-- Leaflet fullscreen plugin -->
+        <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+        <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css'
+         rel='stylesheet' />
+    
+        <!--Stile einbauen-->
+        <link rel="stylesheet" href="main.css">
+    </head>
+    
+    <body>
+        <main>
+            <header>
+                <img class="banner" src="images/prov.Header.jpg" alt="drei skizzierte Radfahrer">
+                <div id="pageHeader_nav">
+    
+                    <nav id="pageHeader_nav_main">
+                        <ul>
+                            <li class="pageHeader_nav_main_item"><a href="https://fan-biking.github.io/index.html">Home</a></a></li>
+                            <li class="pageHeader_nav_main_item active"><a href="https://fan-biking.github.io/karte.html">Interaktive Karte</a></li>
+                            <li class="pageHeader_nav_main_item"><a href="#">Favorite
+                                Trails</a>
+                                <div class="pageHeader_nav_FT">
+                                    <ul>
+                                        <li class="pageHeader_nav_FT_item"><a href="https://fan-biking.github.io/FabisTrail.html">Fabis Trail</a></li>
+                                        <li class="pageHeader_nav_FT_item"><a href="#">Andreas Trail</a></li>
+                                        <li class="pageHeader_nav_FT_item"><a href="#">Nellys Trail</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+    
+                </div>
+            </header>
+            <article>
+                <h1>Fabis Trail</h1>
+                <h2>Strada del Sole Bikepark Serfaus</h2>
+                <p class="mb-5">Die Strada del Sole startet direkt an der Bergstation und bietet auf knapp drei Kilometern Länge mehr als 40 Sprünge, die meist auch umfahren werden können. Freerider finden auf diesem Trail alles, was das Gravity-Herz begehrt. Auf der Strada del Sole ist das Fahrtempo bereits deutlich höher, als auf den blauen Einsteiger-Strecken.<br>
+                <h2>Hard Facts</h2>
+                Schwierigkeit: mittel <br>
+                Markierung: rot<br>
+                Streckenlänge: 2805m<br>
+                (Quelle: <a href="https://www.bike-sfl.at/de/trails-touren/bikeparktrails/Strada-del-Sole_bikepark-trail_175778">Bikepark-Info</a>)</p>
+                <div id="map"> </div>
+                <div>
+                    <nav id="navigation"></nav>
+                </div>
+            </article>
+        </main>
+    </body>
+</html>
