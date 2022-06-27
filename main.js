@@ -29,11 +29,6 @@ const eGrundkarteTirol = {
 // eGrundkarte Tirol Sommer als Startlayer
 let startLayer = eGrundkarteTirol.sommer;
 
-// Overlays Objekt für den GPX Track Layer
-let overlays = {
-    gpx: L.featureGroup()
-};
-
 // Karte initialisieren
 let map = L.map("map", {
     center: [innsbruck.lat, innsbruck.lng],
@@ -51,9 +46,7 @@ let layerControl = L.control.layers({
         eGrundkarteTirol.ortho,
         eGrundkarteTirol.nomenklatur,
     ])
-},{
-    "GPX Track": overlays.gpx,
-}).addTo(map);
+},
 
 // Fullscreen control
 L.control.fullscreen().addTo(map);
@@ -118,35 +111,3 @@ async function loadRadrouten_Tirol(url) {
     }).addTo(map)
 }
 loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
-
-// GPX Track Layer beim Laden anzeigen
-overlays.gpx.addTo(map);
-
-// GPX Track Layer implementieren
-let gpxTrack = new L.GPX("./data/hk.gpx", {
-    async: true,
-    marker_options: {
-        startIconUrl: 'icons/start.png',
-        endIconUrl: 'icons/finish.png',
-        shadowUrl: null,
-        iconSize: [32, 37],
-        iconAnchor: [16, 37],
-        popupAnchor: [0, -37]
-    },
-}).addTo(overlays.gpx);
-
-// nach dem Laden ...
-  gpxTrack.on("loaded", function(evt) {
-// Ausschnitt auf den GPX-Track setzen
-    map.fitBounds(evt.target.getBounds());
-});
-
-let elevationControl = L.control.elevation({
-    time: false,
-    elevationDiv: "#profile",
-    theme: 'bike-tirol',
-    height: 200,
-}).addTo(map);
-gpxTrack.on("addline", function(evt) {
-    elevationControl.addData(evt.line);
-});
