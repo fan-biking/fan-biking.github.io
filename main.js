@@ -29,11 +29,6 @@ const eGrundkarteTirol = {
 // eGrundkarte Tirol Sommer als Startlayer
 let startLayer = eGrundkarteTirol.sommer;
 
-// Overlays Objekt für den GPX Track Layer
-let overlays = {
-    gpx: L.featureGroup()
-};
-
 // Karte initialisieren
 let map = L.map("map", {
     center: [innsbruck.lat, innsbruck.lng],
@@ -51,9 +46,7 @@ let layerControl = L.control.layers({
         eGrundkarteTirol.ortho,
         eGrundkarteTirol.nomenklatur,
     ])
-},{
-    "GPX Track": overlays.gpx,
-}).addTo(map);
+},
 
 // Fullscreen control
 L.control.fullscreen().addTo(map);
@@ -117,6 +110,7 @@ async function loadRadrouten_Tirol(url) {
         `
     }).addTo(map)
 }
+<<<<<<< HEAD
 loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
 
 // GPX Track Layer beim Laden anzeigen
@@ -150,3 +144,6 @@ let elevationControl = L.control.elevation({
 gpxTrack.on("addline", function(evt) {
     elevationControl.addData(evt.line);
 });
+=======
+loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
+>>>>>>> c10ce03bb07de875693c9a66eabd0681f9ac5138
