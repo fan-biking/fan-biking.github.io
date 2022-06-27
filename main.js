@@ -46,7 +46,7 @@ let layerControl = L.control.layers({
         eGrundkarteTirol.ortho,
         eGrundkarteTirol.nomenklatur,
     ])
-},
+}).addTo(map);
 
 // Fullscreen control
 L.control.fullscreen().addTo(map);
@@ -110,40 +110,4 @@ async function loadRadrouten_Tirol(url) {
         `
     }).addTo(map)
 }
-<<<<<<< HEAD
 loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
-
-// GPX Track Layer beim Laden anzeigen
-overlays.gpx.addTo(map);
-
-// GPX Track Layer implementieren
-let gpxTrack = new L.GPX("data/hk.gpx", {
-    async: true,
-    marker_options: {
-        startIconUrl: 'icons/start.png',
-        endIconUrl: 'icons/finish.png',
-        shadowUrl: null,
-        iconSize: [32, 37],
-        iconAnchor: [16, 37],
-        popupAnchor: [0, -37]
-    },
-}).addTo(overlays.gpx);
-
-// nach dem Laden ...
-  gpxTrack.on("loaded", function(evt) {
-// Ausschnitt auf den GPX-Track setzen
-    map.fitBounds(evt.target.getBounds());
-});
-
-let elevationControl = L.control.elevation({
-    time: false,
-    elevationDiv: "#profile",
-    theme: 'bike-tirol',
-    height: 200,
-}).addTo(map);
-gpxTrack.on("addline", function(evt) {
-    elevationControl.addData(evt.line);
-});
-=======
-loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
->>>>>>> c10ce03bb07de875693c9a66eabd0681f9ac5138
