@@ -89,6 +89,14 @@ img.banner {
     background: #e6e6e6;
 }
 
+footer {
+    font-family: "Shadows Into Light", sans-serif;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    border-top: 1px solid black;
+    padding: 1em 0em 3em 0em;
+}
+
 /*Startseite*/
 p {
     line-height: 1.9;
@@ -126,3 +134,4 @@ h4 { font-size: 1.5rem; }
     height: 600px;
     border: 1px solid gray;
 }
+

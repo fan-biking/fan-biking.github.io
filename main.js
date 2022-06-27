@@ -29,11 +29,6 @@ const eGrundkarteTirol = {
 // eGrundkarte Tirol Sommer als Startlayer
 let startLayer = eGrundkarteTirol.sommer;
 
-// Overlays Objekt für den GPX Track Layer
-let overlays = {
-    gpx: L.featureGroup()
-};
-
 // Karte initialisieren
 let map = L.map("map", {
     center: [innsbruck.lat, innsbruck.lng],
@@ -53,13 +48,13 @@ let layerControl = L.control.layers({
     ])
 }).addTo(map);
 
-// Fullscreen control
-L.control.fullscreen().addTo(map);
-
 // Maßstab hinzufügen
 L.control.scale({
     imperial: false,
 }).addTo(map);
+
+// Fullscreen control
+L.control.fullscreen().addTo(map);
 
 // Minimap
 let miniMap = new L.Control.MiniMap(
@@ -109,9 +104,12 @@ async function loadRadrouten_Tirol(url) {
         }
     }).bindPopup(function (layer) {
         return `
-        <strong>${layer.feature.properties.ROUTENNAME}</strong><hr>
+        <strong>${layer.feature.properties.ROUTENNAME} (${layer.feature.properties.ROUTENNUMMER})</strong><hr>
         ${layer.feature.properties.ROUTEN_TYP}<br>
-        Fahrzeit: ${layer.feature.properties.FAHRZEIT}
+        Fahrzeit: ${layer.feature.properties.FAHRZEIT}<br>
+        Distanz: ${layer.feature.properties.LAENGE_HAUPTROUTE_KM} km<br>
+        Höhenmeter bergauf: ${layer.feature.properties.HM_BERGAUF}<br>
+        Höhenmeter bergab: ${layer.feature.properties.HM_BERGAB}
         `
     }).addTo(map)
 }

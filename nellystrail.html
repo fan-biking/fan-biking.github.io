@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAN-Biking Home</title>
+    <title>FAN-Biking Plamorttrail</title>
 
     <!--Tab-Vorschaubild-->
     <link rel="shortcut icon" href="images/prov.user.jpg" type="image/jpg">
 
-    <!--Stile einbauen-->
+     <!-- Font awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+     <!-- Leaflet -->
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+     <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+ 
+     <!-- Leaflet providers plugin -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-providers/1.13.0/leaflet-providers.min.js" integrity="sha512-5EYsvqNbFZ8HX60keFbe56Wr0Mq5J1RrA0KdVcfGDhnjnzIRsDrT/S3cxdzpVN2NGxAB9omgqnlh4/06TvWCMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ 
+     <!-- Leaflet fullscreen plugin -->
+     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+ 
+     <!--Leaflet gpx plugin-->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js" integrity="sha512-BsUtn1Ar2O78Q8YkY1f2pkioHOs8H43KUlP3PHus8lyAMODNq1CmemnU435dFk/SU37OGG+ooxvmEhAcNTEBFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ 
+     <!-- leaflet-elevation -->
+     <link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css" />
+     <script src="https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.js"></script>
+
+    <!--Stile und Scripte einbauen-->
     <link rel="stylesheet" href="main.css">
     <link href="homelayout.css" rel="stylesheet">
+    <script defer src="trail.js"></script>
 
 </head>
-
 <body>
     <main>
         <header>
@@ -30,8 +50,8 @@
                                 Trails</a>
                             <div class="pageHeader_nav_FT">
                                 <ul>
-                                    <li class="pageHeader_nav_FT_item"><a href="https://fan-biking.github.io/FabisTrail.html">Fabis Trail</a></li>
-                                    <li class="pageHeader_nav_FT_item"><a href="https://fan-biking.github.io/andreastrails.html">Andreas Trail</a></li>
+                                    <li class="pageHeader_nav_FT_item"><a href="#">Fabis Trail</a></li>
+                                    <li class="pageHeader_nav_FT_item"><a href="#">Andreas Trail</a></li>
                                     <li class="pageHeader_nav_FT_item"><a href="#">Nellys Trail</a></li>
                                 </ul>
                             </div>
@@ -45,40 +65,23 @@
             <div class="row mb-6">
                 <section class="col-lg-6 mb-lg-0 mb-5">
                     <div class="tm-intro">
-                        <h3 class="tm-title-gray mb-4">Was ist FAN-Biking?</h3>
+                        <h3 class="tm-title-gray mb-4">Plamorttrail</h3>
                         <hr class="mb-5 tm-hr">
-                        <p class="mb-5">FAN = FUN</p>
-                        <p class="mb-5">FAN-Biking ist im Rahmen eines Uniprojekts entstanden</p>
-                        <img src="#" alt="Gruppenbild" class="img-fluid tm-mb-3">
+                        <p class="mb-5">Beschreibung</p>
+                        <p class="mb-5">Hard Facts</p>
+                        <img src="img/biz-oriented-1.jpg" alt="Trailbild" class="img-fluid tm-mb-3">
                     </div>
                 </section>
                 <section class="col-lg-6">
-                    <h3 class="tm-title-gray mb-4">Wer steckt dahinter?</h3>
-                    <hr class="mb-5 tm-hr">
                     <div class="tm-strategy-box mb-5">
-                        <img src="images/fabi.jpg" alt="Fabian" class="img-fluid tm-strategy-img">
-                        <div>
-                            <h4 class="tm-text-primary">Fabian</h4>
-                            <p class="tm-strategy-text">Cooler Typ</p>
-                        </div>
+                        <div id="map"></div>
                     </div>
                     <div class="tm-strategy-box mb-5">
-                        <img src="images/andrea.jpg" alt="Andrea" class="img-fluid tm-strategy-img">
-                        <div>
-                            <h4 class="tm-text-primary">Andrea</h4>
-                            <p class="tm-strategy-text">Badass Chick</p>
-                        </div>
-                    </div>
-                    <div class="tm-strategy-box mb-5">
-                        <img src="images/nelly.jpg" alt="Nelly" class="img-fluid tm-strategy-img">
-                        <div>
-                            <h4 class="tm-text-primary">Nelly</h4>
-                            <p class="tm-strategy-text">verzweifelt</p>
-                        </div>
+                        <div id="profile"></div>
                     </div>
                 </section>
             </div>
-            <!-- Services -->
+            <!-- Services
             <h3 class="tm-title-gray mb-4">Unsere Favorite Trails</h3>
             <hr class="mb-5 tm-hr">
             <div class="row mb-7">
@@ -93,7 +96,7 @@
                     <div class="tm-bg-gray tm-box">
                         <img src="img/biz-oriented-2.jpg" alt="Image" class="img-fluid">
                         <h4 class="tm-text-primary tm-h3 mb-5">Andreas Trail</h4>
-                        <p>Flowiger Trail mit einfacheren Schlüsselstellen und verspielten Elementen. Engere Kurven und Steilkurven, Holzbrücken und naturbelassene Passagen, kleine Wellen und Absprünge sowie natürliche Hindernisse bieten Abwechslung.(Quelle: <a href="https://www.kitzbueheler-alpen.com/de/bri/touren/bike-trail-hahnenkamm.html">Kitzbüheler Alpen</a>)</p>
+                        <p>Kurzbeschreibung</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -103,9 +106,8 @@
                         <p>Kurzbeschreibung</p>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </main>
 </body>
-
 </html>
