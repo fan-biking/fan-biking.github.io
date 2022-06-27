@@ -123,7 +123,7 @@ loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
 overlays.gpx.addTo(map);
 
 // GPX Track Layer implementieren
-let gpxTrack = new L.GPX("./data/hk.gpx", {
+let gpxTrack = new L.GPX("data/hk.gpx", {
     async: true,
     marker_options: {
         startIconUrl: 'icons/start.png',
