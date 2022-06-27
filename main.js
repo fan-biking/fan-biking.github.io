@@ -46,15 +46,15 @@ let layerControl = L.control.layers({
         eGrundkarteTirol.ortho,
         eGrundkarteTirol.nomenklatur,
     ])
-},
-
-// Fullscreen control
-L.control.fullscreen().addTo(map);
+}).addTo(map);
 
 // Maßstab hinzufügen
 L.control.scale({
     imperial: false,
 }).addTo(map);
+
+// Fullscreen control
+L.control.fullscreen().addTo(map);
 
 // Minimap
 let miniMap = new L.Control.MiniMap(
