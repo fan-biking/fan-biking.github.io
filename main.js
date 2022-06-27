@@ -123,34 +123,22 @@ loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
 overlays.gpx.addTo(map);
 
 // GPX Track Layer implementieren
-let track = 'data/hk.gpx'; // URL to your GPX file or the GPX itself
-let gpxTrack = new L.GPX(track, {
-        async: true,
-        /*marker_options: {
-            startIconUrl: 'icons/start.png',
-            endIconUrl: 'icons/finish.png',
-            shadowUrl: null,
-            iconSize: [32, 37],
-            iconAnchor: [16, 37]
-        },*/
-        polyline_options: {
-            color: "black",
-            dashArray: [2,5]
-        }
+let gpxTrack = new L.GPX("./data/hk.gpx", {
+    async: true,
+    marker_options: {
+        startIconUrl: 'icons/start.png',
+        endIconUrl: 'icons/finish.png',
+        shadowUrl: null,
+        iconSize: [32, 37],
+        iconAnchor: [16, 37],
+        popupAnchor: [0, -37]
+    },
 }).addTo(overlays.gpx);
 
-gpxTrack.on("loaded", function(evt) {
-    // console.log("loaded gpx event: ", evt)
-    let gpxLayer = evt.target
-    map.fitBounds(gpxLayer.getBounds());
-    /*let popup = `<h3>${gpxLayer.get_name()}</h3>
-    <ul>
-        <li>Streckenlänge: ${(gpxLayer.get_distance()/1000).toFixed()} km</li>
-        <li>tiefster Punkt: ${gpxLayer.get_elevation_min()} m</li>
-        <li>höchster Punkt: ${gpxLayer.get_elevation_max()} m</li>
-        <li>Höhenmeter bergauf: ${(gpxLayer.get_elevation_gain()).toFixed()}</li>
-        <li>Höhenmeter bergab: ${(gpxLayer.get_elevation_loss()).toFixed()}</li>`;
-    gpxLayer.bindPopup(popup)*/
+// nach dem Laden ...
+  gpxTrack.on("loaded", function(evt) {
+// Ausschnitt auf den GPX-Track setzen
+    map.fitBounds(evt.target.getBounds());
 });
 
 let elevationControl = L.control.elevation({
