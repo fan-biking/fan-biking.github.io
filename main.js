@@ -104,9 +104,12 @@ async function loadRadrouten_Tirol(url) {
         }
     }).bindPopup(function (layer) {
         return `
-        <strong>${layer.feature.properties.ROUTENNAME}</strong><hr>
+        <strong>${layer.feature.properties.ROUTENNAME} (${layer.feature.properties.ROUTENNUMMER})</strong><hr>
         ${layer.feature.properties.ROUTEN_TYP}<br>
-        Fahrzeit: ${layer.feature.properties.FAHRZEIT}
+        Fahrzeit: ${layer.feature.properties.FAHRZEIT}<br>
+        Distanz: ${layer.feature.properties.LAENGE_HAUPTROUTE_KM} km<br>
+        Höhenmeter bergauf: ${layer.feature.properties.HM_BERGAUF}<br>
+        Höhenmeter bergab: ${layer.feature.properties.HM_BERGAB}
         `
     }).addTo(map)
 }
