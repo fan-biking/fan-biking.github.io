@@ -29,8 +29,12 @@
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css'
      rel='stylesheet' />
 
+    <!--Leaflet gpx plugin-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js" integrity="sha512-BsUtn1Ar2O78Q8YkY1f2pkioHOs8H43KUlP3PHus8lyAMODNq1CmemnU435dFk/SU37OGG+ooxvmEhAcNTEBFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!--Stile einbauen-->
     <link rel="stylesheet" href="main.css">
+    <link href="homelayout.css" rel="stylesheet">
 </head>
 
 <body>
@@ -59,10 +63,6 @@
             </div>
         </header>
         <article>
-            <!-- <h1>Andreas Trail</h1>
-            <h2>Bike Trail Hahnenkamm</h2>
-            <p class="mb-5">Flowiger Trail mit einfacheren Schlüsselstellen und verspielten Elementen. Engere Kurven und Steilkurven, Holzbrücken und naturbelassene Passagen, kleine Wellen und Absprünge sowie natürliche Hindernisse bieten Abwechslung. (Quelle: <a href="https://www.kitzbueheler-alpen.com/de/bri/touren/bike-trail-hahnenkamm.html">Kitzbüheler Alpen</a>)</p>
-            <h3>Hard Facts</h3> -->
             <div class="container-fluid mt-7">
                 <div class="row mb-6">
                     <section class="col-lg-6 mb-lg-0 mb-5">
@@ -70,7 +70,8 @@
                             <h3 class="tm-title-gray mb-4">Andreas Trail</h3>
                             <hr class="mb-5 tm-hr">
                             <p class="mb-5">Bike Trail Hahnenkamm</p>
-                            <p class="mb-5">Flowiger Trail mit einfacheren Schlüsselstellen und verspielten Elementen. Engere Kurven und Steilkurven, Holzbrücken und naturbelassene Passagen, kleine Wellen und Absprünge sowie natürliche Hindernisse bieten Abwechslung. <br>(Quelle: <a href="https://www.kitzbueheler-alpen.com/de/bri/touren/bike-trail-hahnenkamm.html">Kitzbüheler Alpen</a>)</p>
+                            <p class="mb-5">Flowiger Trail mit einfacheren Schlüsselstellen und verspielten Elementen. Engere Kurven und Steilkurven, Holzbrücken und naturbelassene Passagen, kleine Wellen und Absprünge sowie natürliche Hindernisse bieten Abwechslung. <br>
+                                Der Flow-Trail führt über den berühmten Hahnenkamm und startet an der Bergstation. Nach dem Ausstieg verläuft rechter Hand die berühmte Rennstrecke „Streif“, auf der linken Seite geht's über den Trail ins Tal, wobei Anfänger wie auch Fortgeschrittene Spaß und Abwechslung finden. Die Strecke ist familientauglich gehalten, mit einfacheren Schlüsselstellen und verspielten Elementen. Durch eine geschickte Trassenführung kommt der Trail ohne viele künstliche Elemente aus. Naturbelassene Passagen, Wiesenkurven, kleine Wellen und Absprünge sowie natürliche Hindernisse bieten Abwechslung und Action für die ganze Familie. Zum Bremsen regt nur ab und zu der schöne Ausblick nach Kitzbühel an.<br>(Quelle: <a href="https://www.kitzbueheler-alpen.com/de/bri/touren/bike-trail-hahnenkamm.html">Kitzbüheler Alpen</a>)</p>
                         </div>
                     </section>
                     <section class="col-lg-6">
@@ -103,11 +104,17 @@
                 <br>
                 <h3 class="tm-title-gray mb-4">GPX-Track</h3>
                 <hr class="mb-5 tm-hr">
-                <br>
             <div id="map"> </div>
-            <div>
+            <div id="profile"></div>
+            <!--<div>
                 <nav id="navigation"></nav>
-            </div>
+            </div>-->
         </article>
+        <footer>
+            <strong>Datenquellen:</strong>
+            <nav>
+                <a href="https://www.kitzbueheler-alpen.com/de/bri/touren/bike-trail-hahnenkamm.html">Kitzbüheler Alpen | Bike Trail Hahnenkamm</a>
+            </nav>
+        </footer>
     </main>
 </body>

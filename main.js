@@ -51,6 +51,8 @@ let layerControl = L.control.layers({
         eGrundkarteTirol.ortho,
         eGrundkarteTirol.nomenklatur,
     ])
+},{
+    "GPX Track": overlays.gpx,
 }).addTo(map);
 
 // Fullscreen control
@@ -116,3 +118,47 @@ async function loadRadrouten_Tirol(url) {
     }).addTo(map)
 }
 loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
+
+// GPX Track Layer beim Laden anzeigen
+overlays.gpx.addTo(map);
+
+// GPX Track Layer implementieren
+let track = 'data/hk.gpx'; // URL to your GPX file or the GPX itself
+let gpxTrack = new L.GPX(track, {
+        async: true,
+        /*marker_options: {
+            startIconUrl: 'icons/start.png',
+            endIconUrl: 'icons/finish.png',
+            shadowUrl: null,
+            iconSize: [32, 37],
+            iconAnchor: [16, 37]
+        },*/
+        polyline_options: {
+            color: "black",
+            dashArray: [2,5]
+        }
+}).addTo(overlays.gpx);
+
+gpxTrack.on("loaded", function(evt) {
+    // console.log("loaded gpx event: ", evt)
+    let gpxLayer = evt.target
+    map.fitBounds(gpxLayer.getBounds());
+    /*let popup = `<h3>${gpxLayer.get_name()}</h3>
+    <ul>
+        <li>Streckenlänge: ${(gpxLayer.get_distance()/1000).toFixed()} km</li>
+        <li>tiefster Punkt: ${gpxLayer.get_elevation_min()} m</li>
+        <li>höchster Punkt: ${gpxLayer.get_elevation_max()} m</li>
+        <li>Höhenmeter bergauf: ${(gpxLayer.get_elevation_gain()).toFixed()}</li>
+        <li>Höhenmeter bergab: ${(gpxLayer.get_elevation_loss()).toFixed()}</li>`;
+    gpxLayer.bindPopup(popup)*/
+});
+
+let elevationControl = L.control.elevation({
+    time: false,
+    elevationDiv: "#profile",
+    theme: 'bike-tirol',
+    height: 200,
+}).addTo(map);
+gpxTrack.on("addline", function(evt) {
+    elevationControl.addData(evt.line);
+});
