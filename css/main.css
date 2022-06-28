@@ -165,7 +165,11 @@ h1 {
 
 /*Trailseite*/
 .hardfacts {
-    padding-right: 1em;
     text-align: center;
+    margin-block: 1em;
     font-size: 1.4rem;
+}
+
+.box {
+    padding: 20px;
 }
