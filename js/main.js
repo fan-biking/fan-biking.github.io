@@ -114,3 +114,74 @@ async function loadRadrouten_Tirol(url) {
     }).addTo(map)
 }
 loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
+
+// Legende hinzufügen
+var Legend = new L.control.Legend({
+    position: "topleft",
+    collapsed: true,
+    controlButton: {
+        title: "Legende"
+    },
+    legends: [{
+        label: "Radwanderweg leicht",
+        type: "polyline",
+        stroke: true,
+        weight: 3,
+        color: '#0074D9',
+    },{
+        label: "Radwanderweg mittel",
+        type: "polyline",
+        stroke: true,
+        weight: 3,
+        color: '#FF4136',
+    },{
+        label: "Radwanderweg schwer",
+        type: "polyline",
+        stroke: true,
+        weight: 3,
+        color: '#111111', 
+    },{
+        label: "Mountainbikeroute leicht",
+        type: "polyline",
+        stroke: true,
+        weight: 3,
+        color: '#0074D9',
+        dashArray: [10,6]
+    },{
+        label: "Mountainbikeroute mittel",
+        type: "polyline",
+        stroke: true,
+        weight: 3,
+        color: '#FF4136',
+        dashArray: [10,6]
+    },{
+        label: "Mountainbikeroute schwer",
+        type: "polyline",
+        stroke: true,
+        weight: 3,
+        color: '#111111',
+        dashArray: [10,6]
+    },{
+        label: "Singletrail leicht",
+        type: "polyline",
+        stroke: true,
+        weight: 4,
+        color: '#0074D9',
+        dashArray: [2,8]
+    },{
+        label: "Singletrail mittel",
+        type: "polyline",
+        stroke: true,
+        weight: 4,
+        color: '#FF4136',
+        dashArray: [2,8]
+    },{
+        label: "Singletrail schwer",
+        type: "polyline",
+        stroke: true,
+        weight: 4,
+        color: '#111111',
+        dashArray: [2,8]
+    }]
+});
+map.addControl(Legend)
