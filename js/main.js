@@ -29,6 +29,11 @@ const eGrundkarteTirol = {
 // eGrundkarte Tirol Sommer als Startlayer
 let startLayer = eGrundkarteTirol.sommer;
 
+// Overlays Objekt für Biketrails
+let overlays = {
+    biketrails: L.featureGroup()
+}
+
 // Karte initialisieren
 let map = L.map("map", {
     center: [innsbruck.lat, innsbruck.lng],
@@ -36,6 +41,7 @@ let map = L.map("map", {
     layers: [
         startLayer
     ],
+    spotlight: true,
 });
 
 // Layer control mit WMTS Hintergründen
@@ -46,6 +52,8 @@ let layerControl = L.control.layers({
         eGrundkarteTirol.ortho,
         eGrundkarteTirol.nomenklatur,
     ])
+}, {
+    "Biketrails": overlays.biketrails
 }).addTo(map);
 
 // Maßstab hinzufügen
@@ -63,8 +71,40 @@ let miniMap = new L.Control.MiniMap(
     }
 ).addTo(map)
 
-// Radrouten_Tirol geojson einbauen und anzeigen
+// Biketrails beim Laden anzeigen
+overlays.biketrails.addTo(map)
 
+/*function highlight (layer) {
+    layer.setStyle({
+        weight: 5,
+        color: "#FFDC00",
+        dashArray: ''
+    });
+    if (!L.Browser.ie && !L.Browser.opera) {
+        layer.bringToFront();
+    }
+}
+
+function dehighlight (layer) {
+    if (selected == null || selected._leaflet_id != layer._leaflet_id) {
+        trails.resetStyle(layer);
+    }
+}
+
+function select (layer) {
+    if (selected !== null) {
+        var previous = selected;
+    }
+    map.fitBounds(layer.getBounds());
+    selected = layer;
+    if (previous) {
+        dehighlight(previous);
+    }
+}
+
+var selected = null;*/
+
+// Radrouten_Tirol geojson einbauen und anzeigen
 async function loadRadrouten_Tirol(url) {
     let response = await fetch(url);
     let geojson = await response.json ();
@@ -101,7 +141,20 @@ async function loadRadrouten_Tirol(url) {
                 dashArray: [2,10]
                 }
             }
-        }
+        },
+        /*onEachFeature: function (feature, layer) {
+            layer.on({
+                'mouseover': function (e) {
+                    highlight(e.target);
+                },
+                'mouseout': function (e) {
+                    dehighlight(e.target);
+                },
+                'click': function (e) {
+                    select(e.target);
+                }
+            });
+        }*/
     }).bindPopup(function (layer) {
         return `
         <strong>${layer.feature.properties.ROUTENNAME} (${layer.feature.properties.ROUTENNUMMER})</strong><hr>
@@ -111,6 +164,77 @@ async function loadRadrouten_Tirol(url) {
         Höhenmeter bergauf: ${layer.feature.properties.HM_BERGAUF}<br>
         Höhenmeter bergab: ${layer.feature.properties.HM_BERGAB}
         `
-    }).addTo(map)
+    }).addTo(overlays.biketrails)
 }
 loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
+
+// Legende hinzufügen
+var Legend = new L.control.Legend({
+    position: "topleft",
+    collapsed: true,
+    controlButton: {
+        title: "Legende"
+    },
+    legends: [{
+        label: "Radwanderweg leicht",
+        type: "polyline",
+        stroke: true,
+        weight: 3,
+        color: '#0074D9',
+    },{
+        label: "Radwanderweg mittel",
+        type: "polyline",
+        stroke: true,
+        weight: 3,
+        color: '#FF4136',
+    },{
+        label: "Radwanderweg schwer",
+        type: "polyline",
+        stroke: true,
+        weight: 3,
+        color: '#111111', 
+    },{
+        label: "Mountainbikeroute leicht",
+        type: "polyline",
+        stroke: true,
+        weight: 3,
+        color: '#0074D9',
+        dashArray: [10,6]
+    },{
+        label: "Mountainbikeroute mittel",
+        type: "polyline",
+        stroke: true,
+        weight: 3,
+        color: '#FF4136',
+        dashArray: [10,6]
+    },{
+        label: "Mountainbikeroute schwer",
+        type: "polyline",
+        stroke: true,
+        weight: 3,
+        color: '#111111',
+        dashArray: [10,6]
+    },{
+        label: "Singletrail leicht",
+        type: "polyline",
+        stroke: true,
+        weight: 4,
+        color: '#0074D9',
+        dashArray: [2,8]
+    },{
+        label: "Singletrail mittel",
+        type: "polyline",
+        stroke: true,
+        weight: 4,
+        color: '#FF4136',
+        dashArray: [2,8]
+    },{
+        label: "Singletrail schwer",
+        type: "polyline",
+        stroke: true,
+        weight: 4,
+        color: '#111111',
+        dashArray: [2,8]
+    }]
+});
+map.addControl(Legend)

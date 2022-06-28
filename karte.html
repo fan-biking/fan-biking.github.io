@@ -7,13 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAN: Interaktive Karte</title>
 
-    <!-- Kartenscript -->
-    <script defer src="main.js"></script>
+    <!--Tab-Vorschaubild-->
+    <link rel="shortcut icon" href="images/prov.user.jpg" type="image/jpg">
 
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
-
 
     <!-- Leaflet providers plugin -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-providers/1.13.0/leaflet-providers.min.js" integrity="sha512-5EYsvqNbFZ8HX60keFbe56Wr0Mq5J1RrA0KdVcfGDhnjnzIRsDrT/S3cxdzpVN2NGxAB9omgqnlh4/06TvWCMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -27,11 +26,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js" integrity="sha512-WL3nAJlWFKoDShduxQRyY3wkBnQsINXdIfWIW48ZaPgYz1wYNnxIwFMMgigzSgjNBC2WWZ8Y8/sSyUU6abuF0g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.css" integrity="sha512-qm+jY0iQ4Xf5RL79UB75REDLYD0jtvxxVZp2RVIW8sm8RNiHdeN43oksqUPrBIshJtQcVPrAL08ML2Db8fFZiA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!--Tab-Vorschaubild-->
-    <link rel="shortcut icon" href="images/prov.user.jpg" type="image/jpg">
-
+    <!--Leaflet Legende Script und Stil einbauen-->
+    <link rel="stylesheet" href="css/leaflet.legend.css" />
+    <script type="text/javascript" src="js/leaflet.legend.js"></script>
+    
+    <!-- Kartenscript -->
+    <script defer src="js/main.js"></script>
+    
     <!--Stile einbauen-->
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
 
 </head>
 
@@ -62,14 +65,7 @@
         </header>
         <article>
             <h1>Tiroler Trails im Überblick</h1>
-            <div id="map"> </div>
-            <div>
-                <nav id="navigation"></nav>
-            </div>
-            <h2>Schwierigkeiten</h2>
-            <p>blau: easy cheesy<br>
-            rot: Mittelweg<br>
-            schwarz: da geht's zur Sache</p>
+            <div id="map"></div>
         </article>
     </main>
 </body>
