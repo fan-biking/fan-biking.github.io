@@ -11,6 +11,7 @@ body {
 
 main p {
     font-family: 'Shadows Into Light', cursive, sans-serif;
+    text-align: justify;
 }
 
 /*Header style (für alle Seiten gleich)*/
@@ -29,7 +30,8 @@ img.banner {
     width: 100%;
     text-align: center;
     background-color: #eee;
-    padding: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
     border-bottom: 1px solid black;
     border-top: 1px solid black;
 }
@@ -129,9 +131,10 @@ h4 { font-size: 1.5rem; }
 
 /*Interaktive Karte*/
 article #map {
-    width: 100%;
+    width: 98%;
     height: 600px;
     border: 1px solid gray;
+    margin-left: 1em;
 }
 
 h1 {
