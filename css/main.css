@@ -101,14 +101,6 @@ img.banner {
     padding: 16px 24px;
 }
 
-footer {
-    font-family: "Shadows Into Light", sans-serif;
-    font-size: 0.9em;
-    margin-top: 0.5em;
-    border-top: 1px solid black;
-    padding: 1em 0em 3em 16em;
-}
-
 /*Startseite*/
 p {
     line-height: 1.9;
@@ -172,4 +164,12 @@ h1 {
 
 .box {
     padding: 20px;
+}
+
+footer {
+    font-family: "Shadows Into Light", sans-serif;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    border-top: 1px solid black;
+    padding: 1em 0em 3em 16em;
 }
