@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAN-Biking Plamorttrail</title>
+    <title>FAN: Gerry Trail</title>
 
-    <!--Tab-Vorschaubild-->
-    <link rel="shortcut icon" href="images/prov.user.jpg" type="image/jpg">
-
+     <!--Tab-Vorschaubild-->
+     <link rel="shortcut icon" href="images/prov.user.jpg" type="image/jpg">
+    
      <!-- Font awesome -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -31,7 +32,7 @@
      <script src="https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.js"></script>
 
     <!--Kartenscript-->
-    <script defer src="js/trail.js"></script>
+    <script defer src="js/gerrytrail.js"></script>
 
     <!--Stile einbauen-->
     <link rel="stylesheet" href="css/main.css">
@@ -46,15 +47,15 @@
 
                 <nav id="pageHeader_nav_main">
                     <ul>
-                        <li class="pageHeader_nav_main_item active"><a href="https://fan-biking.github.io/index.html">Home</a></a></li>
+                        <li class="pageHeader_nav_main_item"><a href="https://fan-biking.github.io/index.html">Home</a></a></li>
                         <li class="pageHeader_nav_main_item"><a href="https://fan-biking.github.io/karte.html">Interaktive Karte</a></li>
-                        <li class="pageHeader_nav_main_item"><a href="#">Favorite
+                        <li class="pageHeader_nav_main_item active"><a href="#">Favorite
                                 Trails</a>
                             <div class="pageHeader_nav_FT">
                                 <ul>
-                                    <li class="pageHeader_nav_FT_item"><a href="#">Fabis Trail</a></li>
-                                    <li class="pageHeader_nav_FT_item"><a href="#">Andreas Trail</a></li>
-                                    <li class="pageHeader_nav_FT_item"><a href="#">Nellys Trail</a></li>
+                                    <li class="pageHeader_nav_FT_item"><a href="https://fan-biking.github.io/fabistrail.html">Fabis Trail</a></li>
+                                    <li class="pageHeader_nav_FT_item"><a href="https://fan-biking.github.io/andreastrail.html">Andreas Trail</a></li>
+                                    <li class="pageHeader_nav_FT_item active"><a href="https://fan-biking.github.io/nellystrail.html">Nellys Trail</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -67,14 +68,23 @@
             <div class="row mb-6">
                 <section class="col-lg-6 mb-lg-0 mb-5">
                     <div class="tm-intro">
-                        <h3 class="tm-title-gray mb-4">Gerrytrail</h3>
-                        <hr class="mb-5 tm-hr">
-                        <p class="mb-5">Beschreibung</p>
-                        <p class="mb-5">Hard Facts</p>
-                        <img src="img/biz-oriented-1.jpg" alt="Trailbild" class="img-fluid tm-mb-3">
+                        <h3 class="tm-title-gray mb-4">Gerry Trail</h3>
+                        <hr class="mb-5 tm-hr"> 
+                        <h4 class="tm-text-primary"><strong>Hard Facts</strong></h4>
+                        <br>
+                            <div class="tm-bg-gray box">
+                        <!--<div class="tm-bg-gray tm-box">-->
+                                <p class="hardfacts">🔴 mittel | ⬌ 1,1 km  | ⬊ 150 hm  | 🕔 0:06 h</p>
+                            </div>
+                        <br>
+                        <h4 class="tm-text-primary"><strong>Beschreibung</strong></h4>
+                        <p>Mit dem Gerry Trail wurde der Grundstein des 3-Länder-Enduro-Trails-Netzwerkes am Reschenpass gelegt. Über den Kreuzmoos Trail erreichbar, darf er sich als der absolute „Liebling“ der Mutzkopftrails in Nauders bezeichnen. Mit vielen Wurzeln und Steinüberfahrten lässt der naturbelassene Trail die Herzen der versierten Biker höher schlagen. Die händisch gebaute Strecke schlängelt sich über 150 Höhenmeter talwärts und wartet mit so mancher fahrtechnischen Herausforderung auf, aber jede Schlüsselstelle kann einfach umfahren werden. Auf der Singletrail-Skala wird die Strecke durchgehend mit S2 bewertet. Mehr Informationen zu den 3-Länder-Enduro-Trails gibt es <a href="https://www.3-laenderendurotrails.com/de">hier</a>.</p>
+                        <img src="images/gerrytrail.jpg" alt="Trailbild" class="img-fluid tm-mb-3">
                     </div>
                 </section>
                 <section class="col-lg-6">
+                        <h3 class="tm-title-gray mb-4">GPX-Track</h3>
+                        <hr class="mb-5 tm-hr">
                     <div class="tm-strategy-box mb-5">
                         <div id="map"></div>
                     </div>
@@ -83,33 +93,11 @@
                     </div>
                 </section>
             </div>
-            <!-- Services
-            <h3 class="tm-title-gray mb-4">Unsere Favorite Trails</h3>
-            <hr class="mb-5 tm-hr">
-            <div class="row mb-7">
-                <div class="col-lg-4 col-md-6">
-                    <div class="tm-bg-gray tm-box">
-                        <img src="img/biz-oriented-2.jpg" alt="Image" class="img-fluid">
-                        <h4 class="tm-text-primary tm-h3 mb-5">Fabis Trail</h4>
-                        <p>Kurzbeschreibung</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="tm-bg-gray tm-box">
-                        <img src="img/biz-oriented-2.jpg" alt="Image" class="img-fluid">
-                        <h4 class="tm-text-primary tm-h3 mb-5">Andreas Trail</h4>
-                        <p>Kurzbeschreibung</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="tm-bg-gray tm-box">
-                        <img src="img/biz-oriented-2.jpg" alt="Image" class="img-fluid">
-                        <h4 class="tm-text-primary tm-h3 mb-5">Nellys Trail</h4>
-                        <p>Kurzbeschreibung</p>
-                    </div>
-                </div>
-            </div>-->
         </div>
+        <footer>
+            <strong>Datenquellen:</strong>
+                <a href="https://www.tirol.at/reisefuehrer/sport/radfahren/biketouren/a-oberer-gerry-trail">Tirol</a> | <a href='https://maps.tiroler-oberland.com/v2/de/gdi_summer/2d/69/detail/-1/-1/-1/18311/8721658/false/-1/-1/-1/eyIxODMxMSI6eyJzdWJDYXQiOnsiaW5kZXhWYWx1ZSI6MTgzMTd9fSwiMTg0MzQiOnsic3ViQ2F0Ijp7ImluZGV4VmFsdWUiOjE4NDM3fX19/-1/-1' target='_blank'>Contwise Maps</a> | <a href="https://www.3-laenderendurotrails.com/de">3 Länder Enduro Trails</a>
+        </footer>
     </main>
 </body>
 </html>
