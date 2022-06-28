@@ -29,6 +29,11 @@ const eGrundkarteTirol = {
 // eGrundkarte Tirol Sommer als Startlayer
 let startLayer = eGrundkarteTirol.sommer;
 
+// Overlays Objekt für Biketrails
+let overlays = {
+    biketrails: L.featureGroup()
+}
+
 // Karte initialisieren
 let map = L.map("map", {
     center: [innsbruck.lat, innsbruck.lng],
@@ -36,6 +41,7 @@ let map = L.map("map", {
     layers: [
         startLayer
     ],
+    spotlight: true,
 });
 
 // Layer control mit WMTS Hintergründen
@@ -46,6 +52,8 @@ let layerControl = L.control.layers({
         eGrundkarteTirol.ortho,
         eGrundkarteTirol.nomenklatur,
     ])
+}, {
+    "Biketrails": overlays.biketrails
 }).addTo(map);
 
 // Maßstab hinzufügen
@@ -62,6 +70,9 @@ let miniMap = new L.Control.MiniMap(
         toggleDisplay: true
     }
 ).addTo(map)
+
+// Biketrails beim Laden anzeigen
+overlays.biketrails.addTo(map)
 
 // Radrouten_Tirol geojson einbauen und anzeigen
 
@@ -111,7 +122,7 @@ async function loadRadrouten_Tirol(url) {
         Höhenmeter bergauf: ${layer.feature.properties.HM_BERGAUF}<br>
         Höhenmeter bergab: ${layer.feature.properties.HM_BERGAB}
         `
-    }).addTo(map)
+    }).addTo(overlays.biketrails)
 }
 loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
 
