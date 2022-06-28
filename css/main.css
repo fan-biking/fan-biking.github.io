@@ -135,10 +135,15 @@ h4 { font-size: 1.5rem; }
 .tm-strategy-text { max-width: 480px; }
 .mb-7 { margin-bottom: 140px; }
 .mt-6 { margin-top: 90px; }
-.mt-7 { margin-top: 80px; }
+.mt-7 { margin-top: 90px; }
 
 .tm-bg-gray { background-color: #e6e6e6; }
 .tm-box { padding: 50px; }
+
+h4 > a {
+    color: #000;
+    text-decoration: none;
+}
 
 /*Interaktive Karte*/
 #map {
