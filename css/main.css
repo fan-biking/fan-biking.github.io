@@ -130,7 +130,7 @@ h4 { font-size: 1.5rem; }
 .tm-box { padding: 50px; }
 
 /*Interaktive Karte*/
-article #map {
+#map {
     width: 98%;
     height: 600px;
     border: 1px solid gray;
