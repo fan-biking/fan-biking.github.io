@@ -162,3 +162,10 @@ article #map {
 h1 {
     margin-left: 1em;
 }
+
+/*Trailseite*/
+.hardfacts {
+    padding-right: 1em;
+    text-align: center;
+    font-size: 1.4rem;
+}
