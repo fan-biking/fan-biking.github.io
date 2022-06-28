@@ -74,8 +74,37 @@ let miniMap = new L.Control.MiniMap(
 // Biketrails beim Laden anzeigen
 overlays.biketrails.addTo(map)
 
-// Radrouten_Tirol geojson einbauen und anzeigen
+/*function highlight (layer) {
+    layer.setStyle({
+        weight: 5,
+        color: "#FFDC00",
+        dashArray: ''
+    });
+    if (!L.Browser.ie && !L.Browser.opera) {
+        layer.bringToFront();
+    }
+}
 
+function dehighlight (layer) {
+    if (selected == null || selected._leaflet_id != layer._leaflet_id) {
+        trails.resetStyle(layer);
+    }
+}
+
+function select (layer) {
+    if (selected !== null) {
+        var previous = selected;
+    }
+    map.fitBounds(layer.getBounds());
+    selected = layer;
+    if (previous) {
+        dehighlight(previous);
+    }
+}
+
+var selected = null;*/
+
+// Radrouten_Tirol geojson einbauen und anzeigen
 async function loadRadrouten_Tirol(url) {
     let response = await fetch(url);
     let geojson = await response.json ();
@@ -112,7 +141,20 @@ async function loadRadrouten_Tirol(url) {
                 dashArray: [2,10]
                 }
             }
-        }
+        },
+        /*onEachFeature: function (feature, layer) {
+            layer.on({
+                'mouseover': function (e) {
+                    highlight(e.target);
+                },
+                'mouseout': function (e) {
+                    dehighlight(e.target);
+                },
+                'click': function (e) {
+                    select(e.target);
+                }
+            });
+        }*/
     }).bindPopup(function (layer) {
         return `
         <strong>${layer.feature.properties.ROUTENNAME} (${layer.feature.properties.ROUTENNUMMER})</strong><hr>
