@@ -51,19 +51,7 @@ img.banner {
 .pageHeader_nav_main_item > a {
     font-weight: 800;
     font-size: 30px;
-    line-height: 28px;
-    color: #000;
-    text-decoration: none;
-}
-
-.pageHeader_nav_FT_item > a:last-child {
-    padding: 5px 2px;
-}
-
-.pageHeader_nav_FT_item > a {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 28px;
+    line-height: 50px;
     color: #000;
     text-decoration: none;
 }
@@ -75,19 +63,42 @@ img.banner {
 }
 
 .pageHeader_nav_main_item.active > a,
-.pageHeader_nav_main_item:hover > a {
+.pageHeader_nav_main_item:hover > a,
+.pageHeader_nav_FT_item.active > a,
+.pageHeader_nav_FT_item:hover > a {
     color: #1c642a;
 }
 
 .pageHeader_nav_FT {
     position: absolute;
     left: 0;
-    min-width: 200px;
+    min-width: 230px;
     text-align: left;
 }
 
 .pageHeader_nav_FT > ul {
     background: #e6e6e6;
+    opacity: 1;
+}
+
+.ps {
+    overflow: hidden !important;
+    overflow-anchor: none;
+    -ms-overflow-style: none;
+    touch-action: auto;
+    -ms-touch-action: auto;
+}
+
+.pageHeader_nav_FT_item > a {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000;
+    text-decoration: none;
+}
+
+.pageHeader_nav_FT_item > a:last-child {
+    padding: 16px 24px;
 }
 
 footer {
