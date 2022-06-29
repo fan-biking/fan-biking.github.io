@@ -94,7 +94,7 @@ overlays.rettungspunkte.addTo(map);
 
 function dehighlight (layer) {
     if (selected == null || selected._leaflet_id != layer._leaflet_id) {
-        trails.resetStyle(layer);
+        layer.resetStyle(layer);
     }
 }
 
@@ -103,6 +103,11 @@ function select (layer) {
         var previous = selected;
     }
     map.fitBounds(layer.getBounds());
+    layer.setStyle({
+        weight: 5,
+        color: "#FFDC00",
+        dashArray: ''
+    });
     selected = layer;
     if (previous) {
         dehighlight(previous);
@@ -152,12 +157,6 @@ async function loadRadrouten_Tirol(url) {
         },
         /*onEachFeature: function (feature, layer) {
             layer.on({
-                'mouseover': function (e) {
-                    highlight(e.target);
-                },
-                'mouseout': function (e) {
-                    dehighlight(e.target);
-                },
                 'click': function (e) {
                     select(e.target);
                 }
