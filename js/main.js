@@ -168,6 +168,15 @@ async function loadRadrouten_Tirol(url) {
 }
 loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
 
+// Rettungsstützpunkte hinzufügen
+async function loadMTB_Rettungspunkte(url) {
+    let response = await fetch(url);    
+      let geojson = await response.json();
+      console.log(geojson);
+    L.geoJSON(geojson).addTo(map);
+}
+loadMTB_Rettungspunkte("data/loadMTB_Rettungspunkte.geojson");
+
 // Legende hinzufügen
 var Legend = new L.control.Legend({
     position: "topleft",
