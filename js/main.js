@@ -175,7 +175,7 @@ async function loadMTB_Rettungspunkte(url) {
       console.log(geojson);
     L.geoJSON(geojson).addTo(map);
 }
-loadMTB_Rettungspunkte("data/loadMTB_Rettungspunkte.geojson");
+loadMTB_Rettungspunkte("data/MTB_Rettungspunkte.geojson");
 
 // Legende hinzufügen
 var Legend = new L.control.Legend({
