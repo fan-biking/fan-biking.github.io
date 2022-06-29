@@ -76,8 +76,8 @@ let miniMap = new L.Control.MiniMap(
 // Biketrails beim Laden anzeigen
 overlays.biketrails.addTo(map)
 
-//Rettungspunkte beim Laden anzeigen
-overlays.rettungspunkte.addTo(map)
+//zu Overlay hinzufügen
+overlays.rettungspunkte.addTo(map);
 
 /*function highlight (layer) {
     layer.setStyle({
@@ -174,9 +174,15 @@ async function loadMTB_Rettungspunkte(url) {
     let response = await fetch(url);
     let geojson = await response.json();
     //console.log(geojson);
+
+    //zu Overlay hinzufügen
+    //let overlay = L.featureGroup();
+    //layerControl.addOverlay(overlay, "Rettungspunkte");
+    //overlay.addTo(map);
+
     L.geoJSON(geojson, {
         pointToLayer: function (geoJsonPoint, latlng) {
-            let popup = `
+           let popup = `
         ${layer.feature.properties.NAME}
         `;
             return L.marker(latlng, {
@@ -190,6 +196,8 @@ async function loadMTB_Rettungspunkte(url) {
     }).addTo(overlays.rettungspunkte);
 }
 loadMTB_Rettungspunkte("data/MTB_Rettungspunkte.geojson");
+
+
 
 // Legende hinzufügen
 var Legend = new L.control.Legend({
