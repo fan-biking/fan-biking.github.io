@@ -175,17 +175,19 @@ async function loadMTB_Rettungspunkte(url) {
     let geojson = await response.json();
     //console.log(geojson);
     L.geoJSON(geojson, {
-        pointToLayer: function(geoJsonPoint, latlng) {
+        pointToLayer: function (geoJsonPoint, latlng) {
             let popup = `
         ${layer.feature.properties.NAME}
         `;
             return L.marker(latlng, {
                 icon: L.icon({
-                    iconUrl: "images/firstaid.png",
+                    iconUrl: "icons/firstaid.png",
+                    iconAnchor: [16, 37],
+                    popupAnchor: [0, -37]
                 })
             }).bindPopup(popup);
         }
-      }).addTo(overlays.rettungspunkte);
+    }).addTo(overlays.rettungspunkte);
 }
 loadMTB_Rettungspunkte("data/MTB_Rettungspunkte.geojson");
 
