@@ -31,7 +31,8 @@ let startLayer = eGrundkarteTirol.sommer;
 
 // Overlays Objekt für Biketrails
 let overlays = {
-    biketrails: L.featureGroup()
+    biketrails: L.featureGroup(),
+    rettungspunkte: L.featureGroup()
 }
 
 // Karte initialisieren
@@ -53,7 +54,8 @@ let layerControl = L.control.layers({
         eGrundkarteTirol.nomenklatur,
     ])
 }, {
-    "Biketrails": overlays.biketrails
+    "Biketrails": overlays.biketrails,
+    "Rettungspunkte": overlays.rettungspunkte
 }).addTo(map);
 
 // Maßstab hinzufügen
@@ -73,6 +75,9 @@ let miniMap = new L.Control.MiniMap(
 
 // Biketrails beim Laden anzeigen
 overlays.biketrails.addTo(map)
+
+//Rettungspunkte beim Laden anzeigen
+overlays.rettungspunkte.addTo(map)
 
 /*function highlight (layer) {
     layer.setStyle({
@@ -175,8 +180,9 @@ async function loadMTB_Rettungspunkte(url) {
       console.log(geojson);
     L.geoJSON(geojson).bindPopup(function (layer) {
         return `
-        ${layer.feature.properties.NAME}`
-    }).addTo(map);
+        ${layer.feature.properties.NAME}
+        `
+    }).addTo(overlays.rettungspunkte)
 }
 loadMTB_Rettungspunkte("data/MTB_Rettungspunkte.geojson");
 
