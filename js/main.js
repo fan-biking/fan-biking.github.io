@@ -177,7 +177,7 @@ loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
 async function loadMTB_Rettungspunkte(url) {
     let response = await fetch(url);    
       let geojson = await response.json();
-      console.log(geojson);
+      //console.log(geojson);
     L.geoJSON(geojson).bindPopup(function (layer) {
         return `
         ${layer.feature.properties.NAME}
