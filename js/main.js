@@ -179,6 +179,8 @@ async function loadMTB_Rettungspunkte(url) {
 
     L.geoJSON(geojson, {
         pointToLayer: function (geoJsonPoint, latlng) {
+            let searchList = document.querySelector("#searchList");
+            searchList.innerHTML += `<option value="${geoJsonPoint.properties.NAME}"></option>`;
            let popup = `
                 ${geoJsonPoint.properties.NAME}
         `;
