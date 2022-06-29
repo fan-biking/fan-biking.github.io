@@ -202,6 +202,10 @@ var Legend = new L.control.Legend({
         title: "Legende"
     },
     legends: [{
+        label: "Rettungstützpunkte",
+        type: "image",
+        url: "icons/firstaid.png"
+    },{
         label: "Radwanderweg leicht",
         type: "polyline",
         stroke: true,
