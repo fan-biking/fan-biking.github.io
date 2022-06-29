@@ -32,7 +32,7 @@ let startLayer = eGrundkarteTirol.sommer;
 // Overlays Objekt für Biketrails
 let overlays = {
     biketrails: L.featureGroup(),
-    rettungspunkte: L.featureGroup()
+    rettungspunkte: L.markerClusterGroup()
 }
 
 // Karte initialisieren
