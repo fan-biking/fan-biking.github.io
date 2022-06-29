@@ -178,7 +178,7 @@ async function loadMTB_Rettungspunkte(url) {
     L.geoJSON(geojson, {
         pointToLayer: function (geoJsonPoint, latlng) {
            let popup = `
-        
+                ${geoJsonPoint.properties.NAME}
         `;
             return L.marker(latlng, {
                 icon: L.icon({
