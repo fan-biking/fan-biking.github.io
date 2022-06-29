@@ -112,10 +112,10 @@ var selected = null;*/
 // Radrouten_Tirol geojson einbauen und anzeigen
 async function loadRadrouten_Tirol(url) {
     let response = await fetch(url);
-    let geojson = await response.json ();
+    let geojson = await response.json();
     //console.log('Geojson Radrouten_Tirol: ', geojson);
     L.geoJSON(geojson, {
-        style: function(feature) {
+        style: function (feature) {
             //console.log(feature.properties.OBJEKT)
 
             let colors = {
@@ -127,23 +127,19 @@ async function loadRadrouten_Tirol(url) {
             if (feature.properties.OBJEKT == "RADW_L" || feature.properties.OBJEKT == "RAD_M" || feature.properties.OBJEKT == "RAD_S") {
                 return {
                     color: `${colors[feature.properties.SCHWIERIGKEITSGRAD]}`,
-                weight: 3,
+                    weight: 3,
                 }
-            }
-
-            else if (feature.properties.OBJEKT == "MTB_L" || feature.properties.OBJEKT == "MTB_M" || feature.properties.OBJEKT == "MTB_S") {
+            } else if (feature.properties.OBJEKT == "MTB_L" || feature.properties.OBJEKT == "MTB_M" || feature.properties.OBJEKT == "MTB_S") {
                 return {
                     color: `${colors[feature.properties.SCHWIERIGKEITSGRAD]}`,
-                weight: 3,
-                dashArray: [10,6],
+                    weight: 3,
+                    dashArray: [10, 6],
                 }
-            }
-
-            else {
+            } else {
                 return {
                     color: `${colors[feature.properties.SCHWIERIGKEITSGRAD]}`,
-                weight: 4,
-                dashArray: [2,10]
+                    weight: 4,
+                    dashArray: [2, 10]
                 }
             }
         },
@@ -175,9 +171,9 @@ loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
 
 // Rettungsstützpunkte hinzufügen
 async function loadMTB_Rettungspunkte(url) {
-    let response = await fetch(url);    
-      let geojson = await response.json();
-      //console.log(geojson);
+    let response = await fetch(url);
+    let geojson = await response.json();
+    //console.log(geojson);
     L.geoJSON(geojson).bindPopup(function (layer) {
         return `
         ${layer.feature.properties.NAME}
@@ -199,60 +195,60 @@ var Legend = new L.control.Legend({
         stroke: true,
         weight: 3,
         color: '#0074D9',
-    },{
+    }, {
         label: "Radwanderweg mittel",
         type: "polyline",
         stroke: true,
         weight: 3,
         color: '#FF4136',
-    },{
+    }, {
         label: "Radwanderweg schwer",
         type: "polyline",
         stroke: true,
         weight: 3,
-        color: '#111111', 
-    },{
+        color: '#111111',
+    }, {
         label: "Mountainbikeroute leicht",
         type: "polyline",
         stroke: true,
         weight: 3,
         color: '#0074D9',
-        dashArray: [10,6]
-    },{
+        dashArray: [10, 6]
+    }, {
         label: "Mountainbikeroute mittel",
         type: "polyline",
         stroke: true,
         weight: 3,
         color: '#FF4136',
-        dashArray: [10,6]
-    },{
+        dashArray: [10, 6]
+    }, {
         label: "Mountainbikeroute schwer",
         type: "polyline",
         stroke: true,
         weight: 3,
         color: '#111111',
-        dashArray: [10,6]
-    },{
+        dashArray: [10, 6]
+    }, {
         label: "Singletrail leicht",
         type: "polyline",
         stroke: true,
         weight: 4,
         color: '#0074D9',
-        dashArray: [2,8]
-    },{
+        dashArray: [2, 8]
+    }, {
         label: "Singletrail mittel",
         type: "polyline",
         stroke: true,
         weight: 4,
         color: '#FF4136',
-        dashArray: [2,8]
-    },{
+        dashArray: [2, 8]
+    }, {
         label: "Singletrail schwer",
         type: "polyline",
         stroke: true,
         weight: 4,
         color: '#111111',
-        dashArray: [2,8]
+        dashArray: [2, 8]
     }]
 });
 map.addControl(Legend)
