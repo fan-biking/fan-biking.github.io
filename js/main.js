@@ -173,17 +173,12 @@ loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
 async function loadMTB_Rettungspunkte(url) {
     let response = await fetch(url);
     let geojson = await response.json();
-    //console.log(geojson);
-
-    //zu Overlay hinzufügen
-    //let overlay = L.featureGroup();
-    //layerControl.addOverlay(overlay, "Rettungspunkte");
-    //overlay.addTo(map);
+    console.log(geojson);
 
     L.geoJSON(geojson, {
         pointToLayer: function (geoJsonPoint, latlng) {
            let popup = `
-        ${layer.feature.properties.NAME}
+        
         `;
             return L.marker(latlng, {
                 icon: L.icon({
@@ -196,8 +191,6 @@ async function loadMTB_Rettungspunkte(url) {
     }).addTo(overlays.rettungspunkte);
 }
 loadMTB_Rettungspunkte("data/MTB_Rettungspunkte.geojson");
-
-
 
 // Legende hinzufügen
 var Legend = new L.control.Legend({
