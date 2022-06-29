@@ -171,5 +171,6 @@ footer {
     font-size: 0.9em;
     margin-top: 0.5em;
     border-top: 1px solid black;
-    padding: 1em 0em 3em 16em;
+    padding: 1em 0em 3em 1em;
+    text-align: left;
 }
