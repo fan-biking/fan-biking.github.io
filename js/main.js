@@ -173,7 +173,10 @@ async function loadMTB_Rettungspunkte(url) {
     let response = await fetch(url);    
       let geojson = await response.json();
       console.log(geojson);
-    L.geoJSON(geojson).addTo(map);
+    L.geoJSON(geojson).bindPopup(function (layer) {
+        return `
+        ${layer.feature.properties.NAME}`
+    }).addTo(map);
 }
 loadMTB_Rettungspunkte("data/MTB_Rettungspunkte.geojson");
 
