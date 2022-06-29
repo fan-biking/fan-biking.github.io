@@ -155,6 +155,11 @@ h1 {
     margin-left: 1em;
 }
 
+#searchForm {
+    margin-left: 1em;
+    padding-bottom: 4px;
+}
+
 /*Trailseite*/
 .hardfacts {
     text-align: center;

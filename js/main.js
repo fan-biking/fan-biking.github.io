@@ -116,9 +116,14 @@ async function loadRadrouten_Tirol(url) {
     let response = await fetch(url);
     let geojson = await response.json();
     //console.log('Geojson Radrouten_Tirol: ', geojson);
-    L.geoJSON(geojson, {
+    let trailsLayer = L.geoJSON(geojson, {
         style: function (feature) {
             //console.log(feature.properties.OBJEKT)
+
+            let searchList = document.querySelector("#searchList")
+            searchList.innerHTML += `<option value="${feature.properties.ROUTENNAME}"></option>`
+            // console.log(document.querySelector("#searchList"))
+            // console.log(`<option value="${feature.properties.ROUTENNAME}"></option>`);
 
             let colors = {
                 "leicht": "#0074D9",
@@ -168,6 +173,29 @@ async function loadRadrouten_Tirol(url) {
         Höhenmeter bergab: ${layer.feature.properties.HM_BERGAB}
         `
     }).addTo(overlays.biketrails)
+
+    let form = document.querySelector("#searchForm");
+    console.log(form.trail);
+    form.suchen.onclick = function() {
+        console.log(form.trail.value);
+        trailsLayer.eachLayer(function (layer) {
+
+            if (form.trail.value == layer.feature.properties.ROUTENNAME) {
+                map.fitBounds(layer.getBounds())
+                layer.bindPopup(function (layer) {
+                    return `
+                    <strong>${layer.feature.properties.ROUTENNAME} (${layer.feature.properties.ROUTENNUMMER})</strong><hr>
+                    ${layer.feature.properties.ROUTEN_TYP}<br>
+                    Fahrzeit: ${layer.feature.properties.FAHRZEIT}<br>
+                    Distanz: ${layer.feature.properties.LAENGE_HAUPTROUTE_KM} km<br>
+                    Höhenmeter bergauf: ${layer.feature.properties.HM_BERGAUF}<br>
+                    Höhenmeter bergab: ${layer.feature.properties.HM_BERGAB}
+                    `
+                }).openPopup()
+                console.log(layer.feature.properties.ROUTENNAME)
+            }
+        })
+    }
 }
 loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
 
@@ -175,7 +203,7 @@ loadRadrouten_Tirol("data/Radrouten_Tirol.geojson");
 async function loadMTB_Rettungspunkte(url) {
     let response = await fetch(url);
     let geojson = await response.json();
-    console.log(geojson);
+    // console.log(geojson);
 
     L.geoJSON(geojson, {
         pointToLayer: function (geoJsonPoint, latlng) {
